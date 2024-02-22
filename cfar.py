@@ -1,13 +1,5 @@
-import numpy as np
-from statistics import mean
-from scipy.stats import percentileofscore
+
 import streamlit as st
-from scipy.stats import norm
-import pandas as pd
-import plotly.graph_objs as go
-import matplotlib.pyplot as plt
-import requests
-from st_aggrid import AgGrid, GridUpdateMode, GridOptionsBuilder
 from datetime import datetime, timedelta
 from PIL import Image
 import time
@@ -15,6 +7,23 @@ import time
 #Gets user input
 
 def app():
+    
+
+    # Then, inject a global style override in your app:
+    style = """
+    <style>
+        /* This sets the background for the entire page */
+        body {
+            background-color: #000000; /* Set the background to black */
+        }
+
+        /* Add additional styles as needed */
+    </style>
+    """
+
+    st.markdown(style, unsafe_allow_html=True)
+
+    
     # Page Configuration
     # Custom CSS to inject into the Streamlit app to center the title
     title_alignment = """
