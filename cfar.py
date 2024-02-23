@@ -34,13 +34,11 @@ def app():
         </style>
         """
 
+    st.sidebar.write("Welcome to the games - You have two minutes in each time zone to settle the necessary trades. Good luck!")
     # Insert the custom CSS with the markdown renderer
     st.markdown(title_alignment, unsafe_allow_html=True)
 
-    if st.sidebar.button("Refresh"):
-    # Use Streamlit's session state to trigger a rerun when the button is clicked
-        st.session_state['refresh'] = not st.session_state.get('refresh', False)
-
+    
     c1,c2,c3 = st.columns((3), gap='large')
    
     import streamlit.components.v1 as components
@@ -229,96 +227,177 @@ def app():
 
     
 
-    st.sidebar.button("Start trading!", key='strt')
-    if st.session_state.strt:
-
-        ticket_details_html = """
-        <div id="ticket-details" style="display: none; background-color: #393939; color: white; margin: 20px auto; padding: 20px; width: 90%; max-width: 2500px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); font-family: sans-serif;">
-            
-            <h3 style="text-align: center;">Ticket Details</h3>
-
-            <div style="display: flex; justify-content: space-between; align-items: center; text-align: center;">
-                <div style="flex: 1; margin-right: 80px; margin-left: 80px;">
-                    <p>Client: Harris Saunas & Co.</p>
-                    <p>Client Payment Type: Low Value Payment</p>
-                </div>
-                <div style="flex: 1; margin-right: 80px; margin-left: 80px;">
-                    <p>Amount USD: $85,000</p>
-                    <p>Amount EUR: $100,000</p>
-                </div>
-                <div style="flex: 1; margin-left: 80px;">
-                    <p>Value Date: 2024-02-22</p>
-                    <p>Rate: 1 USD = 0.85 EUR</p>
-                </div>
-            </div>
-        </div>
-        <script>
-            setTimeout(function() {
-                document.getElementById('ticket-details').style.display = 'flex';
-            }, 5000); // 5000 milliseconds = 5 seconds
-        </script>
-        """
-
-        # Use Streamlit's components.html to render the HTML content
-        components.html(ticket_details_html, height=200)
-
-        ticket_details_html = """
-        <div id="ticket-details" style="display: none; background-color: #393939; color: white; margin: 20px auto; padding: 20px; width: 90%; max-width: 2500px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); font-family: sans-serif;">
-            
-            <h3 style="text-align: center;">Ticket Details</h3>
-
-            <div style="display: flex; justify-content: space-between; align-items: center; text-align: center;">
-                <div style="flex: 1; margin-right: 80px; margin-left: 80px;">
-                    <p>Client: Owens Epoxy Floors</p>
-                    <p>Client Payment Type: Low Value Payment</p>
-                </div>
-                <div style="flex: 1; margin-right: 80px; margin-left: 80px;">
-                    <p>Amount USD: $850</p>
-                    <p>Amount EUR: $1,000</p>
-                </div>
-                <div style="flex: 1; margin-left: 80px;">
-                    <p>Value Date: 2024-02-22</p>
-                    <p>Rate: 1 EUR = 0.85 USD</p>
-                </div>
-            </div>
-        </div>
-        <script>
-            setTimeout(function() {
-                document.getElementById('ticket-details').style.display = 'flex';
-            }, 6000); // 5000 milliseconds = 5 seconds
-        </script>
-        """
-
-        # Use Streamlit's components.html to render the HTML content
-        components.html(ticket_details_html, height=200)
-
     
-        ticket_details_html = """
-            <div id="ticket-details" style="display: none; background-color: #393939; color: white; margin: 20px auto; padding: 20px; width: 90%; max-width: 2500px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); font-family: sans-serif;">
-                
-                <h3 style="text-align: center;">Ticket Details</h3>
 
-                <div style="display: flex; justify-content: space-between; align-items: center; text-align: center;">
-                    <div style="flex: 1; margin-right: 80px; margin-left: 80px;">
-                        <p>Client: Harris Saunas & Co.</p>
-                        <p>Client Payment Type: Low Value Payment</p>
-                    </div>
-                    <div style="flex: 1; margin-right: 80px; margin-left: 80px;">
-                        <p>Amount USD: $850</p>
-                        <p>Amount EUR: $1,000</p>
-                    </div>
-                    <div style="flex: 1; margin-left: 80px;">
-                        <p>Value Date: 2024-02-22</p>
-                        <p>Rate: 1 USD = 0.85 EUR</p>
-                    </div>
-                </div>
-            </div>
-            <script>
-                setTimeout(function() {
-                    document.getElementById('ticket-details').style.display = 'flex';
-                }, 7000); // 5000 milliseconds = 5 seconds
-            </script>
-            """
+    ticket_details_html = """
+    <div id="ticket-details" style="display: none; background-color: #393939; color: white; margin: 20px auto; padding: 20px; width: 90%; max-width: 2500px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); font-family: sans-serif;">
 
-            # Use Streamlit's components.html to render the HTML content
-        components.html(ticket_details_html, height=200)
+    <h3 style="text-align: center;">Ticket Details</h3>
+
+    <div style="display: flex; justify-content: space-between; align-items: center; text-align: center;">
+        <div style="flex: 1; margin-right: 80px; margin-left: 80px;">
+            <p>Client: Harris Saunas & Co.</p>
+            <p>Cover Counterparty: Citi</p>
+        </div>
+        <div style="flex: 1; margin-right: 80px; margin-left: 80px;">
+            
+            <p>Buy Amount EUR: $100,000</p>
+            <p>Sell Amount USD: $85,000</p>
+        </div>
+        <div style="flex: 1; margin-left: 80px;">
+            <p>Value Date: 2024-02-22</p>
+            <p>Rate: 1 EUR = 0.85 USD</p>
+        </div>
+        <div style="flex: 1; margin-left: 80px;">
+            
+            <p>Client Payment Type: Low Value Payment</p>
+        </div>
+    </div>
+    </div>
+    <script>
+    setTimeout(function() {
+        document.getElementById('ticket-details').style.display = 'flex';
+    }, 5000); // 5000 milliseconds = 5 seconds
+    </script>
+    """
+
+    # Use Streamlit's components.html to render the HTML content
+    components.html(ticket_details_html, height=200)
+
+    ticket_details_html = """
+    <div id="ticket-details" style="display: none; background-color: #393939; color: white; margin: 20px auto; padding: 20px; width: 90%; max-width: 2500px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); font-family: sans-serif;">
+
+    <h3 style="text-align: center;">Ticket Details</h3>
+
+    <div style="display: flex; justify-content: space-between; align-items: center; text-align: center;">
+        <div style="flex: 1; margin-right: 80px; margin-left: 80px;">
+            <p>Client: Owens Epoxy Flooring</p>
+            <p>Cover Counterparty: Goldman</p>
+        </div>
+        <div style="flex: 1; margin-right: 80px; margin-left: 80px;">
+            <p>Buy Amount USD: $200,000</p>
+            <p> Sell Amount GBP: $242,000</p>
+        </div>
+        <div style="flex: 1; margin-left: 80px;">
+            <p>Value Date: 2024-02-22</p>
+            <p>Rate: 1 GBP = 1.21 USD</p>
+        </div>
+        <div style="flex: 1; margin-left: 80px;">
+            
+            <p>Client Payment Type: Wire</p>
+        </div>
+    </div>
+    </div>
+    <script>
+    setTimeout(function() {
+        document.getElementById('ticket-details').style.display = 'flex';
+    }, 12000); // 5000 milliseconds = 5 seconds
+    </script>
+    """
+
+    # Use Streamlit's components.html to render the HTML content
+    components.html(ticket_details_html, height=200)
+
+
+    ticket_details_html = """
+    <div id="ticket-details" style="display: none; background-color: #393939; color: white; margin: 20px auto; padding: 20px; width: 90%; max-width: 2500px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); font-family: sans-serif;">
+        
+        <h3 style="text-align: center;">Ticket Details</h3>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; text-align: center;">
+        <div style="flex: 1; margin-right: 80px; margin-left: 80px;">
+            <p>Client: Glover's Glass Ghosts</p>
+            <p>Cover Counterparty: Macquarie</p>
+        </div>
+        <div style="flex: 1; margin-right: 80px; margin-left: 80px;">
+            <p>Buy Amount USD: $50,000</p>
+            <p>Sell Amount CAD: $67,500</p>
+        </div>
+        <div style="flex: 1; margin-left: 80px;">
+            <p>Value Date: 2024-02-22</p>
+            <p>Rate: 1 USD = 1.35 CAD</p>
+        </div>
+        <div style="flex: 1; margin-left: 80px;">
+            
+            <p>Client Payment Type: Low Value Payment</p>
+        </div>
+        </div>
+    </div>
+    <script>
+        setTimeout(function() {
+            document.getElementById('ticket-details').style.display = 'flex';
+        }, 22000); // 5000 milliseconds = 5 seconds
+    </script>
+    """
+
+    # Use Streamlit's components.html to render the HTML content
+    components.html(ticket_details_html, height=200)
+
+    ticket_details_html = """
+    <div id="ticket-details" style="display: none; background-color: #393939; color: white; margin: 20px auto; padding: 20px; width: 90%; max-width: 2500px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); font-family: sans-serif;">
+        
+        <h3 style="text-align: center;">Ticket Details</h3>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; text-align: center;">
+        <div style="flex: 1; margin-right: 80px; margin-left: 80px;">
+            <p>Client: Harris Saunas & Co.</p>
+            <p>Cover Counterparty: Goldman</p>
+        </div>
+        <div style="flex: 1; margin-right: 80px; margin-left: 80px;">
+            
+            <p>Buy Amount AUD: $500,000</p>
+            <p>Sell Amount USD: $350,000</p>
+        </div>
+        <div style="flex: 1; margin-left: 80px;">
+            <p>Value Date: 2024-02-22</p>
+        </div>
+        <div style="flex: 1; margin-left: 80px;">
+            
+            <p>Client Payment Type: Wire</p>
+            
+        </div>
+        </div>
+    </div>
+    <script>
+        setTimeout(function() {
+            document.getElementById('ticket-details').style.display = 'flex';
+        }, 33000); // 5000 milliseconds = 5 seconds
+    </script>
+    """
+
+    # Use Streamlit's components.html to render the HTML content
+    components.html(ticket_details_html, height=200)
+
+    ticket_details_html = """
+    <div id="ticket-details" style="display: none; background-color: #393939; color: white; margin: 20px auto; padding: 20px; width: 90%; max-width: 2500px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); font-family: sans-serif;">
+        
+        <h3 style="text-align: center;">Ticket Details</h3>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; text-align: center;">
+        <div style="flex: 1; margin-right: 80px; margin-left: 80px;">
+            <p>Client: Owens Epoxy Flooring</p>
+            <p>Cover Counterparty: Citi</p>
+        </div>
+        <div style="flex: 1; margin-right: 80px; margin-left: 80px;">
+            <p>Buy Amount USD: $85,000</p>
+            <p>Sell Amount EUR: $100,000</p>
+        </div>
+        <div style="flex: 1; margin-left: 80px;">
+            <p>Value Date: 2024-02-22</p>
+            <p>Rate: 1 USD = 0.85 EUR</p>
+        </div>
+        <div style="flex: 1; margin-left: 80px;">
+            
+            <p>Client Payment Type: Low Value Payment</p>
+        </div>
+        </div>
+    </div>
+    <script>
+        setTimeout(function() {
+            document.getElementById('ticket-details').style.display = 'flex';
+        }, 42000); // 
+    </script>
+    """
+
+    # Use Streamlit's components.html to render the HTML content
+    components.html(ticket_details_html, height=200)
